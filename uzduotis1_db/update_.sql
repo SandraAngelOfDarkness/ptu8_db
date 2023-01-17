@@ -1,0 +1,1 @@
+UPDATE DARBUOTOJAI SET PAREIGOS = "Testuotojas" WHERE PAVARDĖ = "Antanaitis"

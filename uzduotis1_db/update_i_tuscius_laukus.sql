@@ -1,0 +1,2 @@
+-- SQLite
+UPDATE DARBUOTOJAI SET PAREIGOS = "Tatuiruotojas", SKYRIUS_PAVADINIMAS = "Pardavimas" WHERE VARDAS = "Jonas" AND PAVARDĖ = "Jonaitis"

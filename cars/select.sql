@@ -28,10 +28,10 @@
 -- SELECT min(year), max(year), avg(year) FROM cars;
 -- SELECT min(price), max(price), avg(price) FROM cars;
 -- SELECT make, model, min(price) FROM cars WHERE make="Toyota";
-SELECT make, model, year, min(price) AS pigiausia, count(make) AS c
-    FROM cars
-    WHERE year > 1990
-    GROUP BY make
-    HAVING c>1
-    ORDER BY pigiausia;
+-- SELECT make, model, year, min(price) AS pigiausia, count(make) AS c
+    -- FROM cars
+    -- WHERE year > 1990
+    -- GROUP BY make
+    -- HAVING c>1
+    -- ORDER BY pigiausia;
 -- SELECT sum(price), count(price) as kiekis FROM cars;

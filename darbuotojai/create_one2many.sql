@@ -16,7 +16,8 @@ CREATE TABLE tasks (
     id INTEGER PRIMARY KEY NOT NULL,
     name VARCHAR(200) NOT NULL,
     coders_id INTEGER,
-    FOREIGN KEY
+    FOREIGN KEY (coder_id) REFERENCES coders (id)
+);
 
 
 INSERT INTO "teams" ("name") VALUES ('Back End');

@@ -1,4 +1,4 @@
-CREATE TABLE coder (
+CREATE TABLE IF NOT EXISTS coder (
     id INTEGER PRIMARY KEY NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -8,14 +8,12 @@ CREATE TABLE coder (
 );
 
 INSERT INTO coder (first_name, last_name, email, age, experience)
-VALUES ("Kestutis", "Januskevicius", "kestas@midonov.fi", 39, 25);
-
+VALUES ("Kestutis", "Januskevicius", "kestas@midonow.fi", 39, 25);
 INSERT INTO coder (first_name, last_name, email, age, experience)
-VALUES ("Emilija", "Grybaite", "stas@midonov.fi", 19, 22);
+VALUES ("Emilija", "Grybaite", "emi@midonow.fi", 19, 2);
 SELECT * FROM coder;
 
--- jei reikia perkurti lentele
 DROP TABLE coder;
 ALTER TABLE coder ADD COLUMN project_id INTEGER;
 ALTER TABLE coder ADD COLUMN teams_id INTEGER;
-ALTER TABLE coder RENAME COLUMN teams_id to team_id;
+ALTER TABLE coder RENAME COLUMN teams_id TO team_id;

@@ -94,7 +94,7 @@ def kaciuku_sarasas():
     print("--- Kaciuku sarasas ---")
     kaciukai = session.query(Vaikas).all()
     for kaciukas in kaciukai:
-        print(kaciukas.id, kaciukas.vardas, kaciukas.veislynas, kaciukas.gimimo_data, kaciukas.kilmes_salis, kaciukas.lytis, kaciukas.tevas_id, kaciukas.mama_id)
+        print(kaciukas.id, kaciukas.vardas, kaciukas.veislynas, kaciukas.gimimo_data, kaciukas.kilmes_salis, kaciukas.isvyko_gyventi, kaciukas.lytis, kaciukas.tevas_id, kaciukas.mama_id)
 
 #def bendra_paieska(query=session.query(Vaikas)):
     #kaciukai = session.query(Vaikas).all()

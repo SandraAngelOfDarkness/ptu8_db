@@ -18,3 +18,4 @@ class Kates():
         self.main.destroy()
 
 langas.mainloop()
+

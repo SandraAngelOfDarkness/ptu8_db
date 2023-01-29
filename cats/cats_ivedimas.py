@@ -166,4 +166,6 @@ while True:
         pakeisti_irasa()
     if pasirinkimas == "9":
         panaikinti_irasa()
+
+
     

@@ -15,3 +15,4 @@ class MainApp():
     def run_kates(self):
         self.window_kates = Toplevel(self.main)
         self.app = Kates(self.window_kates)
+

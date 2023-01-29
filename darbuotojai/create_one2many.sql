@@ -21,7 +21,11 @@ CREATE TABLE tasks (
 );
 
 CREATE TABLE skills (
+<<<<<<< HEAD
     id INTEGER PRIMARY KEY NOT NULL
+=======
+    id INTEGER PRIMARY KEY NOT NULL,
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
     name VARCHAR(50) NOT NULL
 );
 
@@ -39,6 +43,7 @@ CREATE TABLE passwords (
     FOREIGN KEY (coder_id) REFERENCES coders (id)
 );
 
+<<<<<<< HEAD
 SELECT f_name, skills.name FROM coders
     JOIN coders_skills ON coder_id = coders.id
     JOIN skills ON skill_id = skills.id;
@@ -47,6 +52,12 @@ SELECT f_name, skills.name FROM coders
     JOIN coders_skills on coder_id = coders.id
     JOIN skills ON skill_id = skills.id;
 
+=======
+SELECT f_name, skills.name FROM coders 
+    JOIN coders_skills ON coder_id = coders.id
+    JOIN skills ON skill_id = skills.id;
+
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
 SELECT f_name, l_name, pwd FROM coders JOIN passwords ON coder_id = coders.id;
 
 INSERT INTO "teams" ("name") VALUES ('Back End');
@@ -103,4 +114,8 @@ INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('2', 'verisykret');
 INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('3', 'qwerty');
 INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('4', 'uauauai');
 INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('5', 'slaptazodis');
+<<<<<<< HEAD
 INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('6', 'barzda')
+=======
+INSERT INTO "passwords" ("coder_id", "pwd") VALUES ('6', 'barzda');
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee

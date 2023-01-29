@@ -4,8 +4,13 @@ from sqlalchemy.orm import sessionmaker
 session = sessionmaker(bind=engine)()
 
 def user_choice_menu():
+<<<<<<< HEAD
     print("=== [Project Management System] ===")
     print("1 | add new project")
+=======
+    print("===[ Project Management System ]===")
+    print("1 | add a new project")
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
     print("2 | list/search projects")
     print("3 | update a project")
     print("4 | delete a project")
@@ -30,11 +35,19 @@ def insert_project_from_input():
         return add_project(name, price)
 
 def list_projects(query=session.query(Project)):
+<<<<<<< HEAD
     if len(query.all()) > 0:
         for project in query.all():
             print(project)
     else:
         print("--- No Projects Session ---")
+=======
+    if query and len(query.all()) > 0:
+        for project in query.all():
+            print(project)
+    else:
+        print("--- No Projects Found ---")
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
 
 def search_projects(query=session.query(Project)):
     search = input("Search or enter nothing to continue: ")
@@ -43,7 +56,11 @@ def search_projects(query=session.query(Project)):
     try:
         query_price = float(search)
     except ValueError:
+<<<<<<< HEAD
         query = query.filter(Project.name.ilike(f"%{search}"))
+=======
+        query = query.filter(Project.name.ilike(f"%{search}%"))
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
     else:
         query = query.filter(Project.price >= query_price)
     finally:
@@ -53,7 +70,11 @@ def search_projects(query=session.query(Project)):
         else:
             search_projects()
 
+<<<<<<< HEAD
 def delete_projects(project):
+=======
+def delete_project(project):
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
     print(f"Deleting project {project.id}...")
     session.delete(project)
     session.commit()
@@ -67,7 +88,11 @@ def get_project_by_id():
     else:
         return session.query(Project).get(id)
 
+<<<<<<< HEAD
 def update_projects(project, **changes):
+=======
+def update_project(project, **changes):
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
     for column, value in changes.items():
         if value:
             setattr(project, column, value)
@@ -76,10 +101,17 @@ def update_projects(project, **changes):
 
 def collect_changes(project):
     print(project)
+<<<<<<< HEAD
     print("Enter new values or nothing to leave exixsting")
     changes = {
         "name": input("Name: "),
         "price": float(input("Price: ")),
+=======
+    print("Enter new values or nothing to leave existing.")
+    changes = {
+        "name": input("Name: "),
+        "price": input("Price: "),
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee
     }
     return changes
 
@@ -94,8 +126,16 @@ while True:
         search_projects()
     elif choice == "3":
         project = get_project_by_id()
+<<<<<<< HEAD
         update_projects(project, **collect_changes(project))
     elif choice == "4":
         delete_projects(get_project_by_id())
     else:
         print(f"Error: wrong choice {choice}")
+=======
+        update_project(project, **collect_changes(project))
+    elif choice == "4":
+        delete_project(get_project_by_id())
+    else:
+        print(f"Error: wrong choice {choice}")
+>>>>>>> fbfa35b09b8bfe035025677fef3adc5f63f404ee

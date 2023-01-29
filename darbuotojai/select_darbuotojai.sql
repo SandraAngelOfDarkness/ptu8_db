@@ -1,6 +1,2 @@
 -- SQLite
-<<<<<<< HEAD
-SELECT * From DARBUOTOJAI;
-=======
 SELECT * FROM DARBUOTOJAI;
->>>>>>> b0c8f45520b7d22346caba09f950c23edf2e2a25

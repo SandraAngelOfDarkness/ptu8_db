@@ -1,7 +1,4 @@
-from multiprocessing import connection
-from sqlite3 import connect
 import sqlite3
-from winreg import QueryInfoKey
 from cats_model import Tevas, Mama, Vaikas, engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
@@ -19,7 +16,7 @@ def naudotojo_meniu():
     print("4 | Katinu sarasas/perziura")
     print("5 | Kaciu sarasas/perziura")
     print("6 | Kaciuku sarasas/perziura")
-    #print("7 | Katinu paieska")
+    print("7 | Katinu paieska")
     print("8 | Pakeisti irasa")
     print("9 | Panaikinti irasa")
     print("0 | Iseiti")
@@ -59,9 +56,7 @@ def prideti_kaciuka():
         gimimo_data = datetime.strptime(input("Gimimo data (MMMM-MM-DD): "), "%Y-%m-%d"),
         kilmes_salis = input("Kilmes salis: "),
         isvyko_gyventi = input("Isvyko gyventi: "),
-        lytis = input("Lytis: "),
-        #katinas_id = katinas_id,
-        #kate_id = kate_id
+        lytis = input("Lytis: ")
 )
     katinai = session.query(Tevas).all()
     for katinas in katinai:
@@ -94,29 +89,26 @@ def kaciuku_sarasas():
     print("--- Kaciuku sarasas ---")
     kaciukai = session.query(Vaikas).all()
     for kaciukas in kaciukai:
-        print(kaciukas.id, kaciukas.vardas, kaciukas.veislynas, kaciukas.gimimo_data, kaciukas.kilmes_salis, kaciukas.isvyko_gyventi, kaciukas.lytis, kaciukas.tevas_id, kaciukas.mama_id)
+        print(kaciukas.id, kaciukas.vardas, "||", kaciukas.veislynas, "||", kaciukas.gimimo_data, "||", kaciukas.kilmes_salis, "|->|", kaciukas.isvyko_gyventi, "||", kaciukas.lytis, "||", kaciukas.tevas.vardas, "||", kaciukas.mama.vardas)
 
-#def bendra_paieska(query=session.query(Vaikas)):
-    #kaciukai = session.query(Vaikas).all()
-    #for kaciukas in kaciukai:
-        #print(kaciukas)
-    #paieska = input("Iveskite ko ieskote : ")
-    #if not paieska:
-        #return
-    #try:
-        #query_isvyko_gyventi = str(paieska)
-    #except TypeError:
-        #query = query.filter(Vaikas.lytis.ilike(f"{paieska}"))
-    #else:
-        #query = query.filter(Vaikas.isvyko_gyventi.ilike(f"{paieska}"))
-    #finally:
-        #kaciuku_sarasas(query)
-        #if len(query.all()) > 0:
-            #bendra_paieska(query)
-        #else:
-            #bendra_paieska()
+def bendra_paieska(query=session.query(Vaikas)):
+    kaciukai = session.query(Vaikas).all()
+    for kaciukas in kaciukai:
+        print(kaciukas)
+    paieska = input("Pasirinkite ko norite ieskoti: \n1-kaciukai pagal lyti \n2-kaciuko isvykimo salis \nJusu pasirinkimas: ")
+    if paieska == "1":
+        ieskoma_lytis = query.filter(Vaikas.lytis.ilike(f"%{'patinas'}%")).all()
+    if paieska == "2":
+        query = query.filter(Vaikas.isvyko_gyventi.ilike(f"%{paieska}%")).all()
+  
+
+    kaciuku_sarasas(query)
+    if len(query.all()) > 0:
+        bendra_paieska(query)
+    else:
+        bendra_paieska()
      
-    #print(paieska)
+    print(ieskoma_lytis)
     #return bendra_paieska()
     
 def pakeisti_irasa(query=session.query(Vaikas)):
@@ -160,8 +152,8 @@ while True:
         kaciu_sarasas()
     if pasirinkimas == "6":
         kaciuku_sarasas()
-    #if pasirinkimas == "7":
-        #bendra_paieska()
+    if pasirinkimas == "7":
+        bendra_paieska()
     if pasirinkimas == "8":
         pakeisti_irasa()
     if pasirinkimas == "9":
